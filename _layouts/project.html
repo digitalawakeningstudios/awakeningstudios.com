@@ -5,31 +5,51 @@ layout: default
 <div class="bg-indigo-700">
   <header class="flex justify-between mx-auto xl:max-w-screen-xl">
     <div class="flex flex-col justify-center p-6">
-      <h1 class="font-mono text-indigo-300 text-2xl md:text-3xl lg:text-4xl leading-tight">{{ page.headline }}</h1>
-      <h2 class="font-mono text-indigo-200 text-xl md:text-2xl lg:text-3xl leading-tight">{{ page.subhead }}</h2>
+      <h1
+        class="font-mono text-indigo-300 text-2xl md:text-3xl lg:text-4xl leading-tight"
+      >
+        {{ page.headline }}
+      </h1>
+      <h2
+        class="font-mono text-indigo-200 text-xl md:text-2xl lg:text-3xl leading-tight"
+      >
+        {{ page.subhead }}
+      </h2>
     </div>
     <nav class="flex flex-col justify-center">
       <div class="bg-gray-900 w-10 h-10 mb-2 opacity-75 hover:opacity-100">
         {% if page.previous %}
-          <a href="{{ page.previous.url }}">
-            <img src="/assets/img/up.svg" width="40" height="40" alt="previous">
-          </a>
+        <a href="{{ page.previous.url }}">
+          <img src="/assets/img/up.svg" width="40" height="40" alt="previous" />
+        </a>
         {% else %}
-          <img src="/assets/img/up.svg" width="40" height="40" alt="previous (disabled)" class="opacity-25">
+        <img
+          src="/assets/img/up.svg"
+          width="40"
+          height="40"
+          alt="previous (disabled)"
+          class="opacity-25"
+        />
         {% endif %}
       </div>
       <div class="bg-gray-900 w-10 h-10 mb-2 opacity-75 hover:opacity-100">
         <a href="{% link index.html %}">
-          <img src="/assets/img/close.svg" width="40" height="40" alt="close">
+          <img src="/assets/img/close.svg" width="40" height="40" alt="close" />
         </a>
       </div>
       <div class="bg-gray-900 w-10 h-10 opacity-75 hover:opacity-100">
         {% if page.next %}
-          <a href="{{ page.next.url }}">
-            <img src="/assets/img/down.svg" width="40" height="40" alt="next">
-          </a>
+        <a href="{{ page.next.url }}">
+          <img src="/assets/img/down.svg" width="40" height="40" alt="next" />
+        </a>
         {% else %}
-          <img src="/assets/img/down.svg" width="40" height="40" alt="next (disabled)" class="opacity-25">
+        <img
+          src="/assets/img/down.svg"
+          width="40"
+          height="40"
+          alt="next (disabled)"
+          class="opacity-25"
+        />
         {% endif %}
       </div>
     </nav>
@@ -37,68 +57,107 @@ layout: default
 </div>
 
 <div class="mx-auto sm:pl-6 sm:flex sm:items-start xl:max-w-screen-xl">
-
   {% if page.media %}
-    <div class="relative flex-grow">
-      {% for item in page.media %}
-        <div data-media-id="{{ forloop.index0 }}" class="w-full {% unless forloop.first %}hidden{% endunless %}">
-        {% if item.type == "image" %}
-          <img srcset="{{ item.src }},
+  <div class="relative grow">
+    {% for item in page.media %}
+    <div
+      data-media-id="{{ forloop.index0 }}"
+      class="w-full {% unless forloop.first %}hidden{% endunless %}"
+    >
+      {% if item.type == "image" %}
+      <img
+        srcset="{{ item.src }},
                        {{ item.src2x }} 2x"
-               src="{{ item.src2x }}">
-        {% elsif item.type == "vimeo" %}
-          <div class="px-10">
-            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/{{ item.vimeoId }}?color=f2eae4" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-          </div>
-        {% elsif item.type == "youtube" %}
-          <div class="px-10">
-            <div style="padding:56.25% 0 0 0;position:relative;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/{{ item.youtubeId }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-          </div>
-        {% elsif item.type == "video" %}
-          <video class="w-full" style="max-height: 600px" controls>
-            <source src="{{ item.src }}" type="video/mp4">
-            Sorry, your browser doesn't support embedded videos.
-          </video>
-        {% endif %}
+        src="{{ item.src2x }}"
+      />
+      {% elsif item.type == "vimeo" %}
+      <div class="px-10">
+        <div style="padding: 56.25% 0 0 0; position: relative">
+          <iframe
+            src="https://player.vimeo.com/video/{{ item.vimeoId }}?color=f2eae4"
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            "
+            frameborder="0"
+            allow="autoplay; fullscreen"
+            allowfullscreen
+          ></iframe>
         </div>
-      {% endfor %}
-      <div class="absolute inset-y-0 left-0 flex items-center">
-        <div onclick="prevMedia()" class="bg-gray-900 w-10 h-10 cursor-pointer opacity-75 hover:opacity-100">
-          <img src="/assets/img/left.svg" width="40" height="40" alt="previous">
+        <script src="https://player.vimeo.com/api/player.js"></script>
+      </div>
+      {% elsif item.type == "youtube" %}
+      <div class="px-10">
+        <div style="padding: 56.25% 0 0 0; position: relative">
+          <iframe
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            "
+            src="https://www.youtube.com/embed/{{ item.youtubeId }}"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
-      <div class="absolute inset-y-0 right-0 flex items-center">
-        <div onclick="nextMedia()" class="bg-gray-900 w-10 h-10 cursor-pointer opacity-75 hover:opacity-100">
-          <img src="/assets/img/right.svg" width="40" height="40" alt="next">
-        </div>
+      {% elsif item.type == "video" %}
+      <video class="w-full" style="max-height: 600px" controls>
+        <source src="{{ item.src }}" type="video/mp4" />
+        Sorry, your browser doesn't support embedded videos.
+      </video>
+      {% endif %}
+    </div>
+    {% endfor %}
+    <div class="absolute inset-y-0 left-0 flex items-center">
+      <div
+        onclick="prevMedia()"
+        class="bg-gray-900 w-10 h-10 cursor-pointer opacity-75 hover:opacity-100"
+      >
+        <img src="/assets/img/left.svg" width="40" height="40" alt="previous" />
       </div>
     </div>
+    <div class="absolute inset-y-0 right-0 flex items-center">
+      <div
+        onclick="nextMedia()"
+        class="bg-gray-900 w-10 h-10 cursor-pointer opacity-75 hover:opacity-100"
+      >
+        <img src="/assets/img/right.svg" width="40" height="40" alt="next" />
+      </div>
+    </div>
+  </div>
   {% endif %}
 
-  <div class="grid grid-cols-4 col-gap-6 row-gap-4 p-6 project-details flex-grow-0">
-    <div class="col-span-1 text-right text-accent text-sm font-bold">Category</div>
+  <div class="grid grid-cols-4 gap-x-6 gap-y-4 p-6 project-details grow-0">
+    <div class="col-span-1 text-right text-accent text-sm font-bold">
+      Category
+    </div>
     <div class="col-span-3">{{ page.category }}</div>
 
     {% if page.agency %}
-      <div class="col-span-1 text-right text-accent text-sm font-bold">Agency</div>
-      <div class="col-span-3">
-        {% if page.agencyLink %}
-          <a href="{{ page.agencyLink }}">{{ page.agency }}</a>
-        {% else %}
-          {{ page.agency }}
-        {% endif %}
-      </div>
-    {% endif %}
-
-    {% if page.client %}
-      <div class="col-span-1 text-right text-accent text-sm font-bold">Client</div>
-      <div class="col-span-3">
-        {% if page.clientLink %}
-          <a href="{{ page.clientLink }}">{{ page.client }}</a>
-        {% else %}
-          {{ page.client }}
-        {% endif %}
-      </div>
+    <div class="col-span-1 text-right text-accent text-sm font-bold">
+      Agency
+    </div>
+    <div class="col-span-3">
+      {% if page.agencyLink %}
+      <a href="{{ page.agencyLink }}">{{ page.agency }}</a>
+      {% else %} {{ page.agency }} {% endif %}
+    </div>
+    {% endif %} {% if page.client %}
+    <div class="col-span-1 text-right text-accent text-sm font-bold">
+      Client
+    </div>
+    <div class="col-span-3">
+      {% if page.clientLink %}
+      <a href="{{ page.clientLink }}">{{ page.client }}</a>
+      {% else %} {{ page.client }} {% endif %}
+    </div>
     {% endif %}
 
     <div class="col-span-1 text-right text-accent text-sm font-bold">Tech</div>
@@ -107,7 +166,6 @@ layout: default
     <div class="col-span-1 text-right text-accent text-sm font-bold">Role</div>
     <div class="col-span-3">{{ content }}</div>
   </div>
-
 </div>
 
 <script type="text/javascript">
@@ -119,17 +177,21 @@ layout: default
     if (mediaId < 0) mediaId = media.length - 1;
 
     media.forEach((el) => el.classList.add("hidden"));
-    document.querySelector(`[data-media-id="${mediaId}"]`).classList.remove("hidden");
+    document
+      .querySelector(`[data-media-id="${mediaId}"]`)
+      .classList.remove("hidden");
   };
 
   const nextMedia = () => {
     mediaId = (mediaId + 1) % media.length;
 
     media.forEach((el) => el.classList.add("hidden"));
-    document.querySelector(`[data-media-id="${mediaId}"]`).classList.remove("hidden");
+    document
+      .querySelector(`[data-media-id="${mediaId}"]`)
+      .classList.remove("hidden");
   };
 
-  document.addEventListener('DOMContentLoaded', (event) => {
-    media = document.querySelectorAll('[data-media-id');
+  document.addEventListener("DOMContentLoaded", (event) => {
+    media = document.querySelectorAll("[data-media-id");
   });
 </script>

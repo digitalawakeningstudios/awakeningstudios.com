@@ -8,17 +8,14 @@ twitter:
   card: summary
 logo: /assets/img/social-share-80.jpg
 social:
-  name: Ben Balter
+  name: Nathan Selikoff
   links:
     - https://twitter.com/nselikoff
     - https://www.linkedin.com/in/nathanselikoff/
     - https://github.com/nselikoff
 
-plugins:
-  - jekyll-postcss
-  - jekyll-purgecss
-  - jekyll-sitemap
-  - jekyll-seo-tag
+postcss:
+  cache: false
 
 defaults:
   - scope:

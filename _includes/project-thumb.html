@@ -1,28 +1,44 @@
-<div class="flex-shrink-0">
+<div class="shrink-0">
   {% if forloop.first %}
-    <span class="bg-gray-900 text-accent font-mono text-lg inline-block px-4 py-2 {% if outer_forloop.first and forloop.first %}ml-6{% endif %} mb-4">
-      {{ project.category }}
-    </span>
+  <span
+    class="bg-gray-900 text-accent font-mono text-lg inline-block px-4 py-2 {% if outer_forloop.first and forloop.first %}ml-6{% endif %} mb-4"
+  >
+    {{ project.category }}
+  </span>
   {% endif %}
-  <div class="flex items-end pt-2 pr-2 {% if outer_forloop.first and forloop.first %}pl-6{% endif %} {% if outer_forloop.last and forloop.last %}pr-6{% endif %} bg-gray-900 opacity-90 hover:opacity-100">
+  <div
+    class="flex items-end pt-2 pr-2 {% if outer_forloop.first and forloop.first %}pl-6{% endif %} {% if outer_forloop.last and forloop.last %}pr-6{% endif %} bg-gray-900 opacity-90 hover:opacity-100"
+  >
     <a href="{{ project.url }}">
       <div class="relative">
-        <img class="rounded-md"
-             srcset="{{ project.thumb }},
+        <img
+          class="rounded-md"
+          srcset="{{ project.thumb }},
                      {{ project.thumb2x }} 2x"
-             src="{{ project.thumb2x }}">
-        <div class="rounded-md absolute w-full h-full top-0 left-0 shadow-inner-strong"></div>
-        <div class="bg-accent text-gray-900 p-4 absolute bottom-0 left-0 w-full opacity-90 rounded-b-md">
+          src="{{ project.thumb2x }}"
+        />
+        <div
+          class="rounded-md absolute w-full h-full top-0 left-0 shadow-inner-strong"
+        ></div>
+        <div
+          class="bg-accent text-gray-900 p-4 absolute bottom-0 left-0 w-full opacity-90 rounded-b-md"
+        >
           <div class="font-mono text-lg mb-2">{{ project.headline }}</div>
           <div class="text-sm font-bold">{{ project.subhead }}</div>
         </div>
       </div>
     </a>
   </div>
-  <div class="relative h-24 bg-indigo-750 shadow-md {% unless outer_forloop.first and forloop.first %}-ml-6{% endunless %}">
-    <div class="absolute top-0 left-0 mt-2 h-14 w-10 rounded-md bg-indigo-700 shadow-inner"></div>
+  <div
+    class="relative h-24 bg-indigo-750 shadow-md {% unless outer_forloop.first and forloop.first %}-ml-6{% endunless %}"
+  >
+    <div
+      class="absolute top-0 left-0 mt-2 h-14 w-10 rounded-md bg-indigo-700 shadow-inner"
+    ></div>
     {% if outer_forloop.last and forloop.last %}
-      <div class="absolute top-0 right-0 mt-2 h-14 w-10 rounded-md bg-indigo-700 shadow-inner"></div>
+    <div
+      class="absolute top-0 right-0 mt-2 h-14 w-10 rounded-md bg-indigo-700 shadow-inner"
+    ></div>
     {% endif %}
   </div>
 </div>
